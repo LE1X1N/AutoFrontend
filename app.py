@@ -10,8 +10,8 @@ import modelscope_studio.components.legacy as legacy
 import modelscope_studio.components.antd as antd
 import modelscope_studio.components.pro as pro
 
-from utils import *
-from app_conf import SYSTEM_PROMPT, REACT_IMPORTS, SERVICE_NAME, DEMO_LIST, MODEL, PORT, BASE_URL, API_KEY
+from config.utils import *
+from config.app_conf import SYSTEM_PROMPT, REACT_IMPORTS, SERVICE_NAME, DEMO_LIST, MODEL, PORT, BASE_URL, API_KEY
 
 # logger
 logger = setup_logger(SERVICE_NAME)
@@ -154,7 +154,7 @@ class GradioEvents:
         yield from GradioEvents.generation_code(error_prompt, _setting, _history, task_id)
         
 
-with gr.Blocks(css_paths="./app_style.css") as demo:
+with gr.Blocks(css_paths="./config/app_style.css") as demo:
     # gradio state
     history = gr.State([])      # chat history
     setting = gr.State({"system": SYSTEM_PROMPT,})
