@@ -1,13 +1,4 @@
-# openai
-BASE_URL =  "http://XXXXXXXX"  # your own url
-API_KEY =  "sk-XXXXXXX"        # your own api-key
-MODEL =  "XXXXXX"              # your own model
-
-# service
-PORT = 8686
-SERVICE_NAME = "AutoFrontend"
 WEB_TEMPLATE = open("./tmpls/网页模板-管理系统.jsx", 'r', encoding='utf-8').read()
-
 
 SYSTEM_PROMPT = """You are an expert on frontend design, you will always respond to web design tasks.
     Your task is to create a website according to the user's request using either native HTML or React framework

@@ -1,0 +1,9 @@
+# openai config
+base_url: http://localhost:8001/v1
+api_key: sk-XXXXXX
+model: Qwen3
+
+
+# service config
+port: 8686
+service_name: "AutoFrontend"

@@ -5,25 +5,29 @@ from dashscope.api_entities.dashscope_response import Role
 import random
 from openai import OpenAI
 
+import yaml
 import modelscope_studio.components.base as ms
 import modelscope_studio.components.legacy as legacy
 import modelscope_studio.components.antd as antd
 import modelscope_studio.components.pro as pro
 
 from config.utils import *
-from config.app_conf import SYSTEM_PROMPT, REACT_IMPORTS, SERVICE_NAME, DEMO_LIST, MODEL, PORT, BASE_URL, API_KEY
+from config.app_conf import SYSTEM_PROMPT, REACT_IMPORTS, DEMO_LIST
+
+# config
+conf = yaml.safe_load(open("config/openai_conf.yaml", "r"))
 
 # logger
-logger = setup_logger(SERVICE_NAME)
+logger = setup_logger(conf['service_name'])
 
 # open-ai client
 client = OpenAI(
-    base_url=BASE_URL,  
-    api_key=API_KEY 
+    base_url=conf['base_url'],  
+    api_key=conf['api_key']
 )
 
-print(f"Service Port: {PORT}")
-print(f"Model: {MODEL}")
+print(f"Service Port: {conf['port']}")
+print(f"Model: {conf['model']}")
 
 
 class GradioEvents:
@@ -45,7 +49,7 @@ class GradioEvents:
     
         # OpenAI compatible generation
         gen = client.chat.completions.create(
-                model=MODEL,  
+                model=conf['model'],  
                 messages=messages, 
                 stream=True,
             )
@@ -159,7 +163,6 @@ with gr.Blocks(css_paths="./config/app_style.css") as demo:
     history = gr.State([])      # chat history
     setting = gr.State({"system": SYSTEM_PROMPT,})
     current_task_id = gr.State("")      # task 
-    # render_success = gr.State(False)     # render success flat
 
     with ms.Application() as app:
         with antd.ConfigProvider():
@@ -200,8 +203,6 @@ with gr.Blocks(css_paths="./config/app_style.css") as demo:
                         antd.Divider("设置")
                         with antd.Flex(gap="small", wrap=True):
                             settingPromptBtn = antd.Button("⚙️ 设置系统提示词", type="default")
-                            # codeBtn = antd.Button("🧑‍💻 浏览代码", type="default")
-                            # historyBtn = antd.Button("📜 对话历史", type="default")
                             tour_btn = antd.Button("💡 使用教程", type="default")
 
                     # set system Prompt buttons
@@ -357,4 +358,4 @@ with gr.Blocks(css_paths="./config/app_style.css") as demo:
 
 
 if __name__ == "__main__":
-    demo.launch(ssr_mode=False, share=False, debug=False, server_port=PORT)
+    demo.launch(ssr_mode=False, share=False, debug=False, server_port=conf['port'])
