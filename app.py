@@ -4,6 +4,7 @@ import time
 from dashscope.api_entities.dashscope_response import Role
 import random
 from openai import OpenAI
+from pathlib import Path
 
 import yaml
 import modelscope_studio.components.base as ms
@@ -164,6 +165,9 @@ with gr.Blocks(css_paths="./config/app_style.css") as demo:
     setting = gr.State({"system": SYSTEM_PROMPT,})
     current_task_id = gr.State("")      # task 
 
+
+
+
     with ms.Application() as app:
         with antd.ConfigProvider():
             with antd.Row(gutter=[32, 12]) as layout:
@@ -171,10 +175,10 @@ with gr.Blocks(css_paths="./config/app_style.css") as demo:
                 """Left side (input area)"""
                 with antd.Col(span=24, md=8):
                     with antd.Flex(vertical=True, gap="middle", wrap=True):
-                        # header
+                        # header                        
                         header = gr.HTML(
-                            """
-                                <div class="left_header">
+                            f"""
+                                <div class='left_header'>
                                     <h1>AutoFrontend</h1>
                                 </div>
                             """
