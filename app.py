@@ -172,7 +172,7 @@ with gr.Blocks(css_paths="./app_style.css") as demo:
                         header = gr.HTML(
                             """
                                 <div class="left_header">
-                                    <h1>AutoFrontend 前端界面设计</h2>
+                                    <h1>AutoFrontend</h1>
                                 </div>
                             """
                         )
