@@ -1,8 +1,33 @@
 .left_header {
+  display: flex;      
+  flex-direction: row;     
+  align-items: center;  
+  justify-content: center;  
+  width: 100%;
+  gap: 15px;
+  
+}
+
+.left_header .logo {
+  width: 13%;
+  box-sizing: border-box;
+}
+
+.title-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+}
+
+.english-title {
+  font-size: 1.8rem; 
+  margin: 0 0 5px 0;
+  font-weight: bold;
+}
+
+.chinese-title {
+  font-size: 1.2rem; 
+  margin: 0 0 15px 0;
+  color: #666;
 }
 
 .right_panel {

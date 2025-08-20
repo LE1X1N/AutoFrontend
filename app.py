@@ -17,6 +17,7 @@ from config.app_conf import SYSTEM_PROMPT, REACT_IMPORTS, DEMO_LIST
 
 # config
 conf = yaml.safe_load(open("config/openai_conf.yaml", "r"))
+gr.set_static_paths(paths=[Path.cwd().absolute() / "imgs"])
 
 # logger
 logger = setup_logger(conf['service_name'])
@@ -165,21 +166,22 @@ with gr.Blocks(css_paths="./config/app_style.css") as demo:
     setting = gr.State({"system": SYSTEM_PROMPT,})
     current_task_id = gr.State("")      # task 
 
-
-
-
     with ms.Application() as app:
         with antd.ConfigProvider():
             with antd.Row(gutter=[32, 12]) as layout:
                 
                 """Left side (input area)"""
                 with antd.Col(span=24, md=8):
-                    with antd.Flex(vertical=True, gap="middle", wrap=True):
+                    with antd.Flex(vertical=True, gap="middle", wrap=True):              
                         # header                        
                         header = gr.HTML(
                             f"""
                                 <div class='left_header'>
-                                    <h1>AutoFrontend</h1>
+                                    <img src='/gradio_api/file=imgs/logo.png' class="logo" alt="logo">
+                                    <div class="title-container">
+                                        <h1 class="english-title">AutoFrontend</h1>
+                                        <p class="chinese-title">自动前端原型构建</p>
+                                    </div>
                                 </div>
                             """
                         )
@@ -362,4 +364,4 @@ with gr.Blocks(css_paths="./config/app_style.css") as demo:
 
 
 if __name__ == "__main__":
-    demo.launch(ssr_mode=False, share=False, debug=False, server_port=conf['port'])
+    demo.launch(ssr_mode=False, share=False, debug=True, server_port=conf['port'], favicon_path="imgs/logo.png")

@@ -1,6 +1,6 @@
 <p align="center">
   <picture>
-    <img alt="AutoFrontend" src="./imgs/img_1.png" width=75%>
+    <img alt="AutoFrontend" src="./imgs/img_1.png" width=80%>
   </picture>
 </p>
 
