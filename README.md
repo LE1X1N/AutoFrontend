@@ -6,13 +6,14 @@
 
 ## About
 
+AutoFronted 是一款基于 Gradio 开发的前端代码自动生成工具。通过简单输入界面设计需求（如布局、组件、交互逻辑等），工具可实时生成对应的前端代码，并同步预览界面效果，无需手动编写复杂代码
 
 ## Getting Started
 
 
 ## Features
 
-1. 前端依赖
+### 1. 前端依赖
 
 - "semantic-ui-react": "https://esm.sh/semantic-ui-react@2.1.5"
 - "semantic-ui-css": "https://esm.sh/semantic-ui-css@2.5.0"
@@ -30,8 +31,9 @@
 - "p5": "https://esm.sh/p5@2.0.3"
 - "dayjs": "https://esm.sh/dayjs"
 
-2. 失败重试
+### 2. 失败重试
 
-3. 模板支持
+### 3. 模板支持
 
-4. 日志记录
+### 4. 日志记录
+
