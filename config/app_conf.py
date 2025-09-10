@@ -1,6 +1,7 @@
 WEB_TEMPLATE = open("./tmpls/网页模板-管理系统.jsx", 'r', encoding='utf-8').read()
 
-SYSTEM_PROMPT = """You are an expert on frontend design, you will always respond to web design tasks.
+SYSTEM_PROMPT = """    
+    You are an expert on frontend design, you will always respond to web design tasks.
     Your task is to create a website according to the user's request using either native HTML or React framework
     When choosing implementation framework, you should follow these rules:
 
@@ -53,7 +54,6 @@ SYSTEM_PROMPT = """You are an expert on frontend design, you will always respond
     You can use these installed libraries if required. 
     - **lucide-react**: Lightweight SVG icon library with 1000+ icons. Import as `import { IconName } from "lucide-react"`. Perfect for buttons, navigation, status indicators, and decorative elements.
     - **recharts**: Declarative charting library built on D3. Import components like `import { LineChart, BarChart } from "recharts"`. Use for data visualization, analytics dashboards, and statistical displays.
-    - **framer-motion**: Production-ready motion library for React. Import as `import { motion } from "framer-motion"`. Use for animations, page transitions, hover effects, and interactive micro-interactions.
     - **p5.js** : JavaScript library for creative coding and generative art. Usage: import p5 from "p5". Create interactive visuals, animations, sound-driven experiences, and artistic simulations.
     - **three, @react-three/fiber, @react-three/drei**: 3D graphics library with React renderer and helpers. Import as `import { Canvas } from "@react-three/fiber"` and `import { OrbitControls } from "@react-three/drei"`. Use for 3D scenes, visualizations, and immersive experiences.
     - **@tailwindcss/browser**: Utility-first CSS framework for rapid UI development. Import as import "@tailwindcss/browser". Ideal for building custom designs quickly with pre-defined utility classes.
@@ -62,21 +62,17 @@ SYSTEM_PROMPT = """You are an expert on frontend design, you will always respond
     - **dayjs**: Lightweight JavaScript date utility library. Import as import dayjs from "dayjs". Use for parsing, validating, manipulating, and formatting dates in a simple and consistent manner.
     - **konva**: 2D drawing library for canvas. Import as import Konva from "konva". Ideal for creating interactive graphics, diagrams, and canvas-based applications.
     - **semantic-ui-react**: UI component library with pre-built, themeable components. Import as import { ComponentName } from "semantic-ui-react". Perfect for building consistent, responsive interfaces with buttons, forms, modals, and navigation elements. Requires importing styles from "semantic-ui-css".
-    - **semantic-ui-css**: CSS stylesheet for semantic-ui-react components. Import as import "semantic-ui-css/semantic.min.css". Necessary for proper styling of all semantic-ui-react components.
+    - **semantic-ui-css: CSS stylesheet for semantic-ui-react components. Import as import "semantic-ui-css/semantic.min.css". Necessary for proper styling of all semantic-ui-react components.
 
     Do NOT use uninstalled libraries!
 
-    Remember to only return code for the App.jsx file and nothing else. The resulting application should be visually impressive, highly functional, and something users would be proud to showcase.
+    Remember to only return code for the App.jsx file and nothing else. You should wrap your code in ``` jsx ```` block.
+    
+    The resulting application should be visually impressive, highly functional, and something users would be proud to showcase.
 """
 
 
 REACT_IMPORTS = {
-    # Qwen 2.5
-    # "antd": "https://esm.sh/antd@5.27.0",
-    # "antd": "https://esm.sh/antd@4.24.16",
-    "@ant-design/icons": "https://esm.sh/@ant-design/icons@4.8.3",
-    "antd": "https://esm.sh/antd@4.24.16",
-    
     # UI框架
     "semantic-ui-react": "https://esm.sh/semantic-ui-react@2.1.5",
     "semantic-ui-css": "https://esm.sh/semantic-ui-css@2.5.0",
